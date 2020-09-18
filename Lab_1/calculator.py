@@ -1,16 +1,28 @@
 import math
 
+def _sign(x):
+    if x >= 0:
+        return 1
+    else:
+        return -1
+
 def sum(m, n):
-    sign = 1 if n > 0 else -1
+    sign = _sign(n)
     n = abs(n)
     while n != 0:
         m += sign
-        n -= sign
+        n -= 1
     return m
 
 def divide(m, n):
+    if n == 0:
+        raise ZeroDivisionError
+
     i = 0
-    sign = 1 if sign(m) == sign(n) else -1
+    sign = 1 if _sign(n) == _sign(m) else -1
+
+    n = abs(n)
+    m = abs(m)
 
     while m >= n:
         m -= n
